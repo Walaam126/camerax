@@ -1,23 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import camphoto from './cameraxphoto.jpg';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <head>
+      <title>CameraX</title>
+      </head>
+      
+      <h1 style={{textAlign:"center"}}>CameraX</h1>
+      <h2 style={{textAlign:"center"}}>Find your amazing items</h2>
+      <img style={{display: "block",marginLeft: "650px"}} src={camphoto} alt="camphoto" />
     </div>
   );
 }
