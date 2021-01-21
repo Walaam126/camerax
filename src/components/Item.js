@@ -1,5 +1,4 @@
 import styles from '../styles';
-import products from '../products';
 const Item = (props) => {
     return (
         <div>
