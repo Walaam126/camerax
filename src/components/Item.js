@@ -1,11 +1,11 @@
-import styles from '../styles';
+import {ItemWrapper} from '../styles';
 const Item = (props) => {
     return (
-        <div>
-        <img style={styles.listimg}src={props.product.image} alt="camphoto" /> 
+        <ItemWrapper>
+        <img src={props.product.image} alt="camphoto" /> 
         <h4>{props.product.name}</h4>
-        <h4>{props.product.price}</h4>
-      </div>
+        <h4 className="itemPrice">{props.product.price}</h4>
+      </ItemWrapper>
         );
 };
 
