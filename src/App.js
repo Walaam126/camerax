@@ -1,8 +1,10 @@
 import Home from './components/Home';
 import CamxProducts from './components/CamxProducts';
+import ProductDetail from './components/ProductDetail';
 import { GlobalStyle, ThemeButton } from './styles';
 import { ThemeProvider } from "styled-components";
 import {useState} from "react";
+import products from './products';
 function App() {
 let [currentTheme,setCurrentTheme]=useState("light");
 let [buttontitle,setbuttontitle]=useState("Dark Theme");
@@ -14,6 +16,12 @@ if (currentTheme==="light"){
   setCurrentTheme(currentTheme="light")
   setbuttontitle(buttontitle="Dark Theme");
 }
+}
+
+let [product,setProduct]=useState(null);
+const setView=()=>{
+if (product) return < ProductDetail product={product} key={product.id} setProduct={setProduct} />
+else return <CamxProducts setProduct={setProduct}/>
 }
   // const theme = {
   //   mainColor: "#9C4F30",
@@ -38,6 +46,7 @@ if (currentTheme==="light"){
     },
   };
 
+
   
   return (
 
@@ -48,7 +57,7 @@ if (currentTheme==="light"){
         {buttontitle}
       </ThemeButton>
     <Home />
-    <CamxProducts />
+    {setView()}
     </ThemeProvider>
   );
 }
