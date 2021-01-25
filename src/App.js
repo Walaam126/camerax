@@ -10,24 +10,29 @@ let [currentTheme,setCurrentTheme]=useState("light");
 let [buttontitle,setbuttontitle]=useState("Dark Theme");
 const toggleCurrentTheme =()=>{
 if (currentTheme==="light"){
-  setCurrentTheme(currentTheme="dark");
-  setbuttontitle(buttontitle="Light Theme");
+  setCurrentTheme("dark");
+  setbuttontitle("Light Theme");
 } else{
-  setCurrentTheme(currentTheme="light")
-  setbuttontitle(buttontitle="Dark Theme");
+  setCurrentTheme("light")
+  setbuttontitle("Dark Theme");
 }
 }
 
+  let [_products, set_products] = useState(products);
+  const deleteProduct = (productID) => {
+    const filteredProducts = _products.filter((product) => product.id !== productID)
+    setProduct(null);
+    set_products(filteredProducts);
+};
+
+
 let [product,setProduct]=useState(null);
 const setView=()=>{
-if (product) return < ProductDetail product={product} key={product.id} setProduct={setProduct} />
-else return <CamxProducts setProduct={setProduct}/>
+if (product) return < ProductDetail product={product} key={product.id} setProduct={setProduct} deleteProduct={deleteProduct}/>
+  else return <CamxProducts setProduct={setProduct} products={_products} deleteProduct={deleteProduct} />
 }
-  // const theme = {
-  //   mainColor: "#9C4F30",
-  //   backgroundColor: "#E7D8C9",
-  //   blue: "#389494"
-  // };
+
+
   
   const theme = {
     light: {
