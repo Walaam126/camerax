@@ -1,8 +1,8 @@
 import Home from './components/Home';
-import products from './products';
 import NavBar from "./components/NavBar";
 import CamxProducts from './components/CamxProducts';
 import ProductDetail from './components/ProductDetail';
+import ProductForm from './components/ProductForm'
 import { GlobalStyle, ThemeButton } from './styles';
 import { ThemeProvider } from "styled-components";
 import {useState} from "react";
@@ -55,7 +55,9 @@ if (currentTheme==="light"){
       <GlobalStyle />
       <NavBar currentTheme={currentTheme} toggleTheme={toggleCurrentTheme} />
       <Switch>
-     
+      <Route  path="/productform">
+          <ProductForm />
+            </Route>
           <Route path="/products/:productSlug" >
           <ProductDetail />
         </Route>
