@@ -1,8 +1,10 @@
 import camphoto from '../cameraxphotom.jpg';
-import {HomeWrapper} from '../styles';
+import { HomeWrapper } from '../styles';
+
 const Home = () => {
     // home section
-  return(
+  return (
+ 
     <HomeWrapper>
       <h1>CameraX</h1>
       <h2>Find your amazing items</h2>

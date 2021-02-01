@@ -1,14 +1,13 @@
 
 import { BiTrash } from 'react-icons/bi'
-
+import { deleteProduct } from '../../store/action';
+import { useDispatch } from "react-redux";
 const DeleteButton = (props) => {
-    const handleDelete = () => {
-        props.deleteProduct(props.productID);
- }
+  const dispatch = useDispatch();
     return(
       <>
     
-            <BiTrash onClick={handleDelete} />
+            <BiTrash onClick={() => dispatch(deleteProduct(props.productID))} />
       </>
     )
   };

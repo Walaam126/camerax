@@ -1,10 +1,14 @@
 import Home from './components/Home';
+import products from './products';
+import NavBar from "./components/NavBar";
 import CamxProducts from './components/CamxProducts';
 import ProductDetail from './components/ProductDetail';
 import { GlobalStyle, ThemeButton } from './styles';
 import { ThemeProvider } from "styled-components";
 import {useState} from "react";
-import products from './products';
+import { Helmet} from 'react-helmet';
+import { Link } from "react-router-dom";
+import { Route, Switch } from "react-router";
 function App() {
 let [currentTheme,setCurrentTheme]=useState("light");
 let [buttontitle,setbuttontitle]=useState("Dark Theme");
@@ -16,23 +20,7 @@ if (currentTheme==="light"){
   setCurrentTheme("light")
   setbuttontitle("Dark Theme");
 }
-}
-
-  let [_products, set_products] = useState(products);
-  const deleteProduct = (productID) => {
-    const filteredProducts = _products.filter((product) => product.id !== productID)
-    setProduct(null);
-    set_products(filteredProducts);
-};
-
-
-let [product,setProduct]=useState(null);
-const setView=()=>{
-if (product) return < ProductDetail product={product} key={product.id} setProduct={setProduct} deleteProduct={deleteProduct}/>
-  else return <CamxProducts setProduct={setProduct} products={_products} deleteProduct={deleteProduct} />
-}
-
-
+}  
   
   const theme = {
     light: {
@@ -54,16 +42,35 @@ if (product) return < ProductDetail product={product} key={product.id} setProduc
 
   
   return (
-
+    <>
+      <div>
+    <Helmet>
+        <title>Home</title>
+        <Link to="/"></Link>
+        <meta name="description" content="Helmet application" />
+    </Helmet>
+      </div>
+  
     <ThemeProvider theme={theme[currentTheme]}>
-    
-    <GlobalStyle />
-    <ThemeButton onClick={toggleCurrentTheme}>
-        {buttontitle}
-      </ThemeButton>
-    <Home />
-    {setView()}
-    </ThemeProvider>
+      <GlobalStyle />
+      <NavBar currentTheme={currentTheme} toggleTheme={toggleCurrentTheme} />
+      <Switch>
+     
+          <Route path="/products/:productSlug" >
+          <ProductDetail />
+        </Route>
+        
+          <Route path="/products" >
+          <CamxProducts />
+          </Route>
+           
+        <Route exact path="/">
+          <Home />
+            </Route>
+       
+      </Switch>
+      </ThemeProvider>
+      </>
   );
 }
 

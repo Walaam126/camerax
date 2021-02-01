@@ -2,20 +2,27 @@ import { ProductWrapper } from '../styles';
 import Item from "./Item";
 import {useState} from "react";
 import SearchBar from "./SearchBar";
+import { Helmet} from 'react-helmet';
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+const CamxProducts = () => {
+const products1=useSelector((state)=>state.products)
 
-
-
-const CamxProducts = (props) => {
   const [query, setQuery] = useState("");
-  const filteredProducts = props.products.filter((product) => (
+  const filteredProducts = products1.filter((product) => (
     product.name.toLocaleLowerCase().includes(query.toLocaleLowerCase())
   ));
   const productList = filteredProducts.map((product) => (
-    <Item product={product} key={product.id} setproduct={props.setProduct} deleteProduct={props.deleteProduct} />
+    <Item product={product} key={product.id} />
 
   ));
   return(
     <>
+      <Helmet>
+      <title>Products Page</title>
+      <meta name="description" content="Nested component" />
+      <Link to="/products"></Link>
+    </Helmet>
     <SearchBar setQuery={setQuery} />
       <ProductWrapper>{productList}</ProductWrapper>
   
