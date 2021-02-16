@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { BiPlusCircle } from 'react-icons/bi'
 import { Link } from "react-router-dom";
 
@@ -6,7 +5,7 @@ import { Link } from "react-router-dom";
 const AddButton = () => {
       return(
         <>
-       <Link to="/productform">
+       <Link to="/products/Addproduct">
                   <BiPlusCircle />
          </Link>
         </>

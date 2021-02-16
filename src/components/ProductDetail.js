@@ -1,5 +1,6 @@
 import { DetailWrapper } from "../styles";
 import DeleteButton from "./buttons/DeleteButton";
+import UpdateButton from "./buttons/UpdateButton"
 import { useParams, Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -13,9 +14,10 @@ const ProductDetail = () => {
       <h1>{Product.name}</h1>
       <img src={Product.image} alt="camphoto" /> 
       <p>{Product.description}</p>
-      <p>{Product.price}</p>
-      <Link to="/products"><button>Back</button></Link>
-      <DeleteButton productID={Product.id}/> 
+      <p>{Product.price} BHD</p>
+      <Link to="/products"><button className="btn btn-primary">Back</button></Link>{' '}
+      <UpdateButton product={Product}/>{' '}
+      <DeleteButton productID={Product.id} /> 
     </DetailWrapper>
   );
 };

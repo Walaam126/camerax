@@ -54,8 +54,8 @@ if (currentTheme==="light"){
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
       <NavBar currentTheme={currentTheme} toggleTheme={toggleCurrentTheme} />
-      <Switch>
-      <Route  path="/productform">
+        <Switch>
+          <Route path={["/products/Addproduct", "/products/:productSlug?/edit"]}>
           <ProductForm />
             </Route>
           <Route path="/products/:productSlug" >

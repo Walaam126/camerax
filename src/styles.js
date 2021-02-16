@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { Link,NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export const GlobalStyle = createGlobalStyle`
 body{
   color: ${(props) => props.theme.mainColor};
@@ -7,29 +7,37 @@ body{
 }
 `;
 
+export const Override = styled.div`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+  justify-content: center;
+  display: flex;
+`;
+
 export const Logo = styled(NavLink)`
-img{
-  width:90px;
-  height:90px;
-}
-`
-export const NavProduct = styled(NavLink)`
-NavItem{
-  color:${(props) => props.theme.mainColor},
+  img {
+    width: 90px;
+    height: 90px;
   }
-    &.active {
+`;
+export const NavProduct = styled(NavLink)`
+  NavItem {
+    color: ${(props) => props.theme.mainColor};
+  }
+  &.active {
     color: ${(props) => props.theme.blue};
     font-weight: bold;
   }
-`
+`;
 
 export const DeleteButtonStyled = styled.button`
-font-size: 1em;
-margin: 1.25em;
-padding: 0.25em 1em;
-border-radius: 3px;
-background-color: ${(props) => props.theme.mainColor};
-color: ${(props) => props.theme.backgroundColor};
+  font-size: 1em;
+  margin: 1.25em;
+  padding: 0.25em 1em;
+  border-radius: 3px;
+  background-color: ${(props) => props.theme.mainColor};
+  color: ${(props) => props.theme.backgroundColor};
 `;
 
 export const DetailWrapper = styled.div`
@@ -57,41 +65,41 @@ export const SearchBarStyled = styled.input`
 `;
 
 export const Mainimag = styled.img`
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 70%;
-`
-
-export const ItemWrapper = styled.div`
-img{
-  width: 50%;
-}
-h4{
-  &.itemPrice{
-    color: ${(props) => props.theme.blue};
-  }
-}
-`;
-export const ProductWrapper = styled.div`
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    text-align: center;
-`
-export const HomeWrapper = styled.div`
-h1{
-  text-align: center;
-}
-h2 {
-  text-align: center;
-}
-img{
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-}
+`;
+
+export const ItemWrapper = styled.div`
+  img {
+    width: 40%;
+  }
+  h4 {
+    &.itemPrice {
+      color: ${(props) => props.theme.blue};
+    }
+  }
+`;
+export const ProductWrapper = styled.div`
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  text-align: center;
+`;
+export const HomeWrapper = styled.div`
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    text-align: center;
+  }
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
 `;
 export const ThemeButton = styled.button`
   font-size: 1em;
@@ -101,5 +109,3 @@ export const ThemeButton = styled.button`
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
 `;
-
-
