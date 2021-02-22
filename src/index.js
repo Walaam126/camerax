@@ -8,14 +8,10 @@ import { BrowserRouter } from "react-router-dom";
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
-import reducer from "./store/reducer";
+import reducer from "./store/reducers/productReducer";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { fetchProducts } from "./store/action";
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
-
-store.dispatch(fetchProducts());
+import { fetchProducts } from "./store/actions/productAction";
+import store from "./store";
 
 ReactDOM.render(
   <React.StrictMode>

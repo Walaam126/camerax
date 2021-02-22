@@ -1,9 +1,8 @@
-import products from "../products";
 const initialState = {
   products: [],
   loading: true,
 };
-export const reducer = (state = initialState, action) => {
+export const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_PRODUCT":
       state.loading = false;
@@ -20,20 +19,10 @@ export const reducer = (state = initialState, action) => {
         products: remainingProducts,
       };
     case "CREATE_PRODUCT":
-      const _newProduct = action.payload.newProduct;
-      const slug = _newProduct.name.toLowerCase().replaceAll(" ", "-");
-      //   const id = state.products.length + 1;
-      action.payload.newProduct = {
-        slug: slug,
-        ...action.payload.newProduct,
-      };
-      console.log({
-        ...state,
-        products: [...state.products, action.payload.newProduct],
-      });
+      const newProduct = action.payload.newProduct;
       return {
         ...state,
-        products: [...state.products, action.payload.newProduct],
+        products: [...state.products, newProduct],
       };
     case "UPDATE_PRODUCT":
       const UpdatedProducts = state.products.map((product) => {
@@ -50,4 +39,4 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default productReducer;

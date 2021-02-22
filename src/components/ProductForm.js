@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { createProduct, updateProduct } from "../store/action";
+import { createProduct, updateProduct } from "../store/actions/productAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
 const ProductForm = () => {
-  const products = useSelector((state) => state.products);
-  const { productSlug } = useParams();
+  const products = useSelector((state) => state.productReducer.products);
+  const { productSlug, shopId } = useParams();
   const _product = products.find((product) => product.slug === productSlug);
 
   const history = useHistory();
   const dispatch = useDispatch();
   const [product, setProduct] = useState({
+    shopId: _product ? _product.shopId : shopId,
     name: _product ? _product.name : "",
     price: _product ? _product.price : "",
     image: _product ? _product.image : "",
@@ -39,12 +40,13 @@ const ProductForm = () => {
       product.id = _product.id;
       product.slug = _product.slug;
       dispatch(updateProduct(product));
-      history.push("/products");
+      // history.push("/products");
     } else {
       dispatch(createProduct(product));
       resetForm();
     }
-    history.push("/products");
+    // history.push("/products");
+    history.goBack();
   };
 
   return (

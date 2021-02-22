@@ -5,16 +5,16 @@ import SearchBar from "./SearchBar";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import AddButton from "./buttons/AddButton";
 import Loading from "./Loading";
 
-const CamxProducts = () => {
-  const products1 = useSelector((state) => state.products);
-  const loading = useSelector((state) => state.loading);
+const CamxProducts = ({ products1 }) => {
+  const loading = useSelector((state) => state.productReducer.loading);
   const [query, setQuery] = useState("");
-  const filteredProducts = products1.filter((product) =>
-    product.name.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredProducts = products1.filter((product) => {
+    if (product) {
+      return product.name.toLowerCase().includes(query.toLowerCase());
+    }
+  });
   const productList = filteredProducts.map((product) => (
     <Item product={product} key={product.id} />
   ));
@@ -28,10 +28,7 @@ const CamxProducts = () => {
 
       <SearchBar setQuery={setQuery} />
       {loading ? <Loading /> : true}
-      <ProductWrapper>
-        {" "}
-        <AddButton /> {productList}{" "}
-      </ProductWrapper>
+      <ProductWrapper> {productList}</ProductWrapper>
     </>
   );
 };
